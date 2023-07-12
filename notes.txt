@@ -1,0 +1,42 @@
+Meters -> current meters
+MPS -> Current meters per second from backpacks & Sherpas
+
+Handicaps -> Current active handicap: {
+  -mps,
+  start,
+  end,
+  stoppageStart,
+  stoppageEnd,
+}
+Boosters -> Current active boosters: {
+  +mps,
+  start,
+  end,
+}
+
+
+Current distance traveled is:
+last updated Meters => single variable
++
+meters since then => single variable
++
+number of meters from each booster until now => can acumulate this into a single variable
+-
+number of meters lost from each handicap handicap until now => can acumulate this into a single variable
+-
+number of meters lost due to each stoppage handicap => can accumulate this into a single variable
+
+
+HOW TO HANDLE HANDICAPS
+1) update meters when u get hit with handicap
+2) calculate and set meter penalty + when it is active, aka 2h stoppage at 2 meters 
+        per second gives 4 meter penalty which is active after duration,
+        meters should have flag indicating it can only be read from last updated meters
+3) any subsequent meter/handicap/booster should update H&P overall meter penalty + flag indicating
+        that meters can now be read from meters + meter delta
+notes) users should be incentivized to update meters on their own, for example a button?
+notes) should have readable flag indicating whether or not user can be hit with penalty
+question) how to handle booster that ends halfway thru meter stoppage?
+        can handle stoppage as specific range in which nothing counts, and instead use that as booster start.
+        also, adding handicap should update for boosters as well
+
